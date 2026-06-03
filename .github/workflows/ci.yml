@@ -1,0 +1,24 @@
+name: Vault CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Vault HCL
+        run: |
+          docker run --rm -v "$PWD/vault/config:/vault/config" hashicorp/vault:1.16 vault server -config=/vault/config/vault.hcl -dev -dev-root-token-id=test &
+          sleep 2
+          docker compose config
+
+      - uses: hashicorp/setup-terraform@v3
+      - name: Terraform validate
+        working-directory: terraform
+        run: terraform init -backend=false && terraform validate
