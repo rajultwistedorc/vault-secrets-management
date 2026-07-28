@@ -22,19 +22,3 @@ curl http://localhost:5000/secrets/db
 ## License
 
 MIT
-
-## Live Screenshots
-
-### Vault UI
-![Vault UI](screenshots/vault-ui.png)
-
-### Vault Health
-![Vault Health](screenshots/vault-health.png)
-
-## Live Screenshots
-
-### Vault UI
-![Vault UI](screenshots/vault-ui.png)
-
-### Vault Health
-![Vault Health](screenshots/vault-health.png)
